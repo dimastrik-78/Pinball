@@ -1,0 +1,93 @@
+{
+    "name": "Play",
+    "maps": [
+        {
+            "name": "New action map",
+            "id": "586921d0-2e51-41a0-8536-fd68b993fc23",
+            "actions": [
+                {
+                    "name": "Start",
+                    "type": "Button",
+                    "id": "eff0d9d2-e898-474f-99eb-85ad2d03e0ff",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ba280979-ba7c-42db-8580-00a44dc6b133",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96103bed-6482-4be8-b39c-41a7d21cc486",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Stick",
+            "id": "9513d0fc-347c-4488-a78b-f16ccae3fe2f",
+            "actions": [
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "22034703-ecd9-4e96-b9a3-1637cf29d728",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "fba65148-76cf-4231-a228-708a5f8f23f1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1ab69801-ee2b-4590-ae1b-71d07370fb13",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "484ba4b3-7f79-42ec-b1d5-10271a6c9899",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
