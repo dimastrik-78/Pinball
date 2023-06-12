@@ -24,7 +24,7 @@ public partial class @Play : IInputActionCollection2, IDisposable
     ""name"": ""Play"",
     ""maps"": [
         {
-            ""name"": ""New action map"",
+            ""name"": ""Spring"",
             ""id"": ""586921d0-2e51-41a0-8536-fd68b993fc23"",
             ""actions"": [
                 {
@@ -109,17 +109,48 @@ public partial class @Play : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Reset"",
+            ""id"": ""32c2c18a-a197-40c3-a1a7-c89485f5bdc4"",
+            ""actions"": [
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""6a76055b-92e1-4cf7-b755-481a7a6ab1f0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5cfe7d18-7da5-4ce2-b978-64d5b72e45f4"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // New action map
-        m_Newactionmap = asset.FindActionMap("New action map", throwIfNotFound: true);
-        m_Newactionmap_Start = m_Newactionmap.FindAction("Start", throwIfNotFound: true);
+        // Spring
+        m_Spring = asset.FindActionMap("Spring", throwIfNotFound: true);
+        m_Spring_Start = m_Spring.FindAction("Start", throwIfNotFound: true);
         // Stick
         m_Stick = asset.FindActionMap("Stick", throwIfNotFound: true);
         m_Stick_Left = m_Stick.FindAction("Left", throwIfNotFound: true);
         m_Stick_Right = m_Stick.FindAction("Right", throwIfNotFound: true);
+        // Reset
+        m_Reset = asset.FindActionMap("Reset", throwIfNotFound: true);
+        m_Reset_Restart = m_Reset.FindAction("Restart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -176,29 +207,29 @@ public partial class @Play : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // New action map
-    private readonly InputActionMap m_Newactionmap;
-    private INewactionmapActions m_NewactionmapActionsCallbackInterface;
-    private readonly InputAction m_Newactionmap_Start;
-    public struct NewactionmapActions
+    // Spring
+    private readonly InputActionMap m_Spring;
+    private ISpringActions m_SpringActionsCallbackInterface;
+    private readonly InputAction m_Spring_Start;
+    public struct SpringActions
     {
         private @Play m_Wrapper;
-        public NewactionmapActions(@Play wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Start => m_Wrapper.m_Newactionmap_Start;
-        public InputActionMap Get() { return m_Wrapper.m_Newactionmap; }
+        public SpringActions(@Play wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Start => m_Wrapper.m_Spring_Start;
+        public InputActionMap Get() { return m_Wrapper.m_Spring; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(NewactionmapActions set) { return set.Get(); }
-        public void SetCallbacks(INewactionmapActions instance)
+        public static implicit operator InputActionMap(SpringActions set) { return set.Get(); }
+        public void SetCallbacks(ISpringActions instance)
         {
-            if (m_Wrapper.m_NewactionmapActionsCallbackInterface != null)
+            if (m_Wrapper.m_SpringActionsCallbackInterface != null)
             {
-                @Start.started -= m_Wrapper.m_NewactionmapActionsCallbackInterface.OnStart;
-                @Start.performed -= m_Wrapper.m_NewactionmapActionsCallbackInterface.OnStart;
-                @Start.canceled -= m_Wrapper.m_NewactionmapActionsCallbackInterface.OnStart;
+                @Start.started -= m_Wrapper.m_SpringActionsCallbackInterface.OnStart;
+                @Start.performed -= m_Wrapper.m_SpringActionsCallbackInterface.OnStart;
+                @Start.canceled -= m_Wrapper.m_SpringActionsCallbackInterface.OnStart;
             }
-            m_Wrapper.m_NewactionmapActionsCallbackInterface = instance;
+            m_Wrapper.m_SpringActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Start.started += instance.OnStart;
@@ -207,7 +238,7 @@ public partial class @Play : IInputActionCollection2, IDisposable
             }
         }
     }
-    public NewactionmapActions @Newactionmap => new NewactionmapActions(this);
+    public SpringActions @Spring => new SpringActions(this);
 
     // Stick
     private readonly InputActionMap m_Stick;
@@ -249,7 +280,40 @@ public partial class @Play : IInputActionCollection2, IDisposable
         }
     }
     public StickActions @Stick => new StickActions(this);
-    public interface INewactionmapActions
+
+    // Reset
+    private readonly InputActionMap m_Reset;
+    private IResetActions m_ResetActionsCallbackInterface;
+    private readonly InputAction m_Reset_Restart;
+    public struct ResetActions
+    {
+        private @Play m_Wrapper;
+        public ResetActions(@Play wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Restart => m_Wrapper.m_Reset_Restart;
+        public InputActionMap Get() { return m_Wrapper.m_Reset; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ResetActions set) { return set.Get(); }
+        public void SetCallbacks(IResetActions instance)
+        {
+            if (m_Wrapper.m_ResetActionsCallbackInterface != null)
+            {
+                @Restart.started -= m_Wrapper.m_ResetActionsCallbackInterface.OnRestart;
+                @Restart.performed -= m_Wrapper.m_ResetActionsCallbackInterface.OnRestart;
+                @Restart.canceled -= m_Wrapper.m_ResetActionsCallbackInterface.OnRestart;
+            }
+            m_Wrapper.m_ResetActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Restart.started += instance.OnRestart;
+                @Restart.performed += instance.OnRestart;
+                @Restart.canceled += instance.OnRestart;
+            }
+        }
+    }
+    public ResetActions @Reset => new ResetActions(this);
+    public interface ISpringActions
     {
         void OnStart(InputAction.CallbackContext context);
     }
@@ -257,5 +321,9 @@ public partial class @Play : IInputActionCollection2, IDisposable
     {
         void OnLeft(InputAction.CallbackContext context);
         void OnRight(InputAction.CallbackContext context);
+    }
+    public interface IResetActions
+    {
+        void OnRestart(InputAction.CallbackContext context);
     }
 }

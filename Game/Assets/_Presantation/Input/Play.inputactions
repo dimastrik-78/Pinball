@@ -2,7 +2,7 @@
     "name": "Play",
     "maps": [
         {
-            "name": "New action map",
+            "name": "Spring",
             "id": "586921d0-2e51-41a0-8536-fd68b993fc23",
             "actions": [
                 {
@@ -83,6 +83,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Reset",
+            "id": "32c2c18a-a197-40c3-a1a7-c89485f5bdc4",
+            "actions": [
+                {
+                    "name": "Restart",
+                    "type": "Button",
+                    "id": "6a76055b-92e1-4cf7-b755-481a7a6ab1f0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5cfe7d18-7da5-4ce2-b978-64d5b72e45f4",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Restart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

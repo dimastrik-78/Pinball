@@ -1,39 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Stick : MonoBehaviour
+namespace _Source.StickSystem
 {
-    [SerializeField] private HingeJoint RightStick;
-    [SerializeField] private HingeJoint LeftStick;
-
-    private Play _pl;
-
-    void Awake()
+    public class Stick : MonoBehaviour
     {
-        _pl = new Play();
-        _pl.Stick.Right.performed += key => ActionRight();
-        _pl.Stick.Left.performed += key => ActionLeft();
-        _pl.Enable();
-    }
+        [SerializeField] private HingeJoint rightStick;
+        [SerializeField] private HingeJoint leftStick;
 
-    private void ActionRight()
-    {
-        StartCoroutine(Rotation(RightStick));
-    }
+        private Play _pl;
+        private StickMovement _stickMovement;
 
-    private void ActionLeft()
-    {
-        StartCoroutine(Rotation(LeftStick));
+        void Awake()
+        {
+            _pl = new Play();
+            _stickMovement = new StickMovement();
+            
+            _pl.Stick.Right.performed += _ => StartCoroutine(_stickMovement.Rotation(rightStick));
+            _pl.Stick.Left.performed += _ => StartCoroutine(_stickMovement.Rotation(leftStick));
+        }
 
-    }
+        private void OnEnable()
+        {
+            _pl.Enable();
+        }
 
-    private IEnumerator Rotation(HingeJoint joint)
-    {
-        joint.useMotor = true;
-
-        yield return new WaitForSeconds(0.1f);
-
-        joint.useMotor = false;
+        private void OnDisable()
+        {
+            _pl.Disable();
+        }
     }
 }
